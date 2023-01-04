@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class=" shadow-lg p-5 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center">
+      <form #addCar="ngForm" (ngSubmit)="onSave(addCar)">
+        <label class="lead " for="name">Item Name</label>
+        <input required class="form-control shadow-lg" name="name" ngModel type="text">
+        <label class="lead" for="price">Item Price</label>
+        <input required class="form-control shadow-lg" name="price" ngModel type="number">
+        <label class="lead" for="img">Item Image</label>
+        <input required class="form-control shadow-lg" name="img" ngModel type="text">
+        <label for="brand">Selet The Game Compnay:</label>
+        <select id="brand" name="brand" ngModel class="form-select mt-2 " aria-label="Default select example">
+          <option  *ngFor="let brand of brands" [value]="brand.img">{{brand.name}}</option>
+        </select>
+        <button [disabled]="!addCar.valid" class="btn btn-primary m-2">Save</button>
+      </form>
+    </div>
+  </div>
+
+
+  <router-outlet></router-outlet>
+  <style>
+    .colss {
+      height: 330px;
+      border-radius: 13px;
+      transform: scale(0.9, 0.9);
+      transition: cubic-bezier(0.215, 0.610, 0.355, 1) 800ms;
+      cursor: pointer;
+      width: 700px;
+      background-color: #596468b5;
+    }
+
+    .colsss {
+      background-color: #596468b5;
+
+    }
+
+    input {
+      width: 300px;
+      color: rgb(245, 245, 245);
+      background-color: #dbe5e982;
+      height: 39px;
+      border-radius: 3px;
+      border: 0.2px solid black;
+
+    }
+
+    label {
+      margin-bottom: 9px;
+      color: rgba(237, 245, 245, 0.843);
+
+    }
+
+    input:focus {
+      width: 300px;
+      color: whitesmoke;
+      background-color: #596468b5;
+      border-radius: 6px;
+      border: 0.2px solid black;
+      outline: none;
+      outline-style: none;
+    }
+  </style>
+
+</div>

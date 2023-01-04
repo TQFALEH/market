@@ -1,0 +1,81 @@
+<div class="container mt-5 my-5 ">
+  <table class="table   table bg-transparent text-light shadow-lg "
+    style="padding: 7.5px 2px; border: 1px solid #475569;">
+    <thead>
+      <tr class="  text-capitalize">
+        <th scope="col" class="  text-center">Name </th>
+        <th scope="col" class="  text-center">Price </th>
+        <th scope="col " class="  text-center">Amount</th>
+        <th scope="col " class="  text-center">total</th>
+        <th scope="col " class="bg-danger bg-opacity-75  text-center">edit</th>
+      </tr>
+    </thead>
+    <tbody class="bg-transparent text-light">
+      <tr  *ngFor="let cart of localCart" class="text-center text-capitalize ">
+        <td>{{cart.name}}</td>
+        <td>{{cart.price}}</td>
+        <td style="max-width: 85px;" *ngIf="!showEdit" #amount>{{cart.amount}}</td>
+        <td style="max-width: 85px;" *ngIf="showEdit"><input
+            class="form-control d-flex justify-content-center bg-secondary text-light bg-opacity-75" type="number"
+            #amount [(ngModel)]="cart.amount" name="" value={{cart.amount}} id=""> </td>
+        <td>{{cart.amount*cart.price}}</td>
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <a *ngIf="!showEdit" (click)="showEdit = !showEdit" class=" text-white  bg-opacity-50 ">
+
+              <svg style="fill:#bcc3cd ;" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m20 11.5c0-.2761424.2238576-.5.5-.5s.5.2238576.5.5v7.0000057c0 1.3807118-1.1192881 2.5-2.5 2.5h-13.01387819c-1.38071187 0-2.5-1.1192882-2.5-2.5v-13.0000057c0-1.38071187 1.11928813-2.5 2.5-2.5h7.01387819c.2761424 0 .5.22385763.5.5s-.2238576.5-.5.5h-7.01387819c-.82842712 0-1.5.67157288-1.5 1.5v13.0000057c0 .8284271.67157288 1.5 1.5 1.5h13.01387819c.8284271 0 1.5-.6715729 1.5-1.5zm-1.1464466-8.35355339 2 2c.1952621.19526215.1952621.51184463 0 .70710678l-8 8.00000001c-.0937682.0937682-.2209452.1464466-.3535534.1464466h-2c-.2761424 0-.5-.2238576-.5-.5v-2c0-.1326082.0526784-.2597852.1464466-.3535534l8-7.99999999c.1952622-.19526215.5118446-.19526215.7071068 0zm-.3535534 1.06066017-7.5 7.50000002v1.2928932h1.2928932l7.5-7.5z" />
+              </svg>
+            </a>
+            <a *ngIf="showEdit" (click)="deleteItemFromCart(cart.id)" class=" text-white ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z"
+                  fill="#bcc3cd" />
+              </svg>
+            </a>
+            <div (click)="showEdit = !showEdit">
+              <a (click)="updateAmount(cart.id,cart.amount)" class=" text-white bg-opacity-50 "><svg
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#bcc3cd" class="bi bi-check2-circle"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg> </a>
+            </div>
+
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+<style>
+  table {
+    border-radius: 15px;
+    border: 1px solid #475569;
+
+  }
+
+  tbody {
+    border: 1px solid #475569;
+
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 11px;
+
+
+  }
+
+  svg {
+    fill: #bcc3cd;
+  }
+</style>

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row d-flex justify-content-center p-5 " style="margin-top: 7%;border-radius:20px">
+    <div class="col-md-6 col-12 ">
+      <div *ngIf="errorMsg != ''" class="alert alert-info text-dark fw-bold" role="alert">
+        {{errorMsg}}
+      </div>
+      <div class="fw-bold fs-1  text-center my-4">Create Account</div>
+      <form class="d-grid gap-2 needs-validation" novalidate #newUser="ngForm" (ngSubmit)="onCreate(newUser)">
+
+        <div class="">
+          <label for="validationCustom02" class="form-label">Name</label>
+          <input class="form-control bg-transparent " id="validationCustom02" placeholder="Your Name" required
+            type="text" name="displayName" #name ngModel>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <input class="bg-transparent form-control" required type="email" name="email" ngModel placeholder="Your Email">
+        <input class="bg-transparent form-control" #password required type="password" name="password" ngModel
+          placeholder="Your password">
+
+        <button [disabled]="newUser.invalid" class="btn bg-danger text-light  ">Create
+          Account</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>
+<style>
+  input {
+    background-color: #475569;
+    border: 1px solid #dbdedfcf;
+    color: #dbdedfcf;
+
+  }
+
+  input:focus {
+    background-color: #475569;
+    border: 1px solid #dbdedfcf;
+    color: #dbdedfcf;
+
+  }
+
+  input:selection {
+    background-color: #475569;
+    border: 1px solid #dbdedfcf
+  }
+
+  * {
+    color: #dbdedfcf;
+  }
+
+  input {
+    background-color: #dbdedfcf;
+    ;
+  }
+</style>
